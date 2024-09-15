@@ -1,0 +1,84 @@
+.header {
+ width: 100%;
+ position: absolute;
+ top: 0;
+ left: 0
+}
+
+.nav {
+    padding: 15
+}
+
+.navList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+}
+
+.navItem {
+    padding: 20;
+    position: relative;
+}
+
+.navLogo {
+    display: flex;
+    align-items: center;
+    margin-left: -40px;
+}
+
+.navLogoPlaceholder {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    background-color: aliceblue;
+    margin-right: 20px;
+}
+
+.navLogoText {
+    font-size: 24px;
+    cursor: pointer;
+    color: aliceblue;
+    font-weight: 900;
+}
+
+.navItemText {
+    cursor: pointer;
+    color: aliceblue;
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    display: none;
+    z-index: 1;
+    margin-top: 20px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 10px;
+  }
+  
+  .dropdownItem {
+    margin-bottom: 10px;
+  }
+  
+  .dropdownItem:last-child {
+    margin-bottom: 0;
+  }
+  
+  .navItem:hover .dropdownMenu {
+    display: block;
+  }
+
+
+  .navSubItem {
+    cursor: pointer;
+    color: black;
+  }
