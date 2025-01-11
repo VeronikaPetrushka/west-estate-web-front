@@ -34,23 +34,25 @@ const Navigation = () => {
   return (
     <header className={css.header}>
       <nav className={css.nav}>
+
         <ul className={css.navList}>
+
           <li className={css.navLogo}>
-            <div className={css.navLogoPlaceholder}>
-              <NavLink to="/"></NavLink>
-            </div>
+            <NavLink to="/" className={css.navLogoPlaceholder}>
+                <img src="src/assets/logo.png" alt="Company logo" className={css.logoImg} />
+            </NavLink>
             <NavLink to="/" className={css.navLogoText}>
               Південний Центр Нерухомості
             </NavLink>
           </li>
-          <li className={css.navItem}>
-            <NavLink
-              to="/buy"
-              className={css.navItemText}
-              onMouseOver={handleBuyMouseOver}
-              onMouseLeave={handleBuyMouseLeave}
-            >
-              Купити
+
+          <li
+            className={css.navItem}
+            onMouseOver={handleBuyMouseOver}
+            onMouseLeave={handleBuyMouseLeave}
+          >
+            <NavLink to="/buy">
+              <p className={css.navItemText}>Купити</p>
             </NavLink>
             {isBuyHovered && (
               <ul className={css.dropdownMenu}>
@@ -63,14 +65,12 @@ const Navigation = () => {
               </ul>
             )}
           </li>
-          <li className={css.navItem}>
-            <NavLink
-              to="/rent"
-              className={css.navItemText}
-              onMouseOver={handleRentMouseOver}
-              onMouseLeave={handleRentMouseLeave}
-            >
-              Орендувати
+
+          <li className={css.navItem}
+            onMouseOver={handleRentMouseOver}
+            onMouseLeave={handleRentMouseLeave}>
+            <NavLink to="/rent">
+              <p className={css.navItemText}>Орендувати</p>
             </NavLink>
             {isRentHovered && (
               <ul className={css.dropdownMenu}>
@@ -83,19 +83,18 @@ const Navigation = () => {
               </ul>
             )}
           </li>
+
           <li className={css.navItem}>
-            <NavLink to="/buy" className={css.navItemText}>
-              Продати
+            <NavLink to="/buy">
+              <p className={css.navItemText}>Продати</p>
             </NavLink>
           </li>
-          <li className={css.navItem}>
-            <NavLink
-              to="/commercial"
-              className={css.navItemText}
-              onMouseOver={handleCommercialMouseOver}
-              onMouseLeave={handleCommercialMouseLeave}
-            >
-              Комерційна нерухомість
+
+          <li className={css.navItem}
+            onMouseOver={handleCommercialMouseOver}
+            onMouseLeave={handleCommercialMouseLeave}>
+            <NavLink to="/commercial">
+              <p className={css.navItemText}>Комерційна нерухомість</p>
             </NavLink>
             {isCommercialHovered && (
               <ul className={css.dropdownMenu}>
@@ -108,17 +107,21 @@ const Navigation = () => {
               </ul>
             )}
           </li>
+
           <li className={css.navItem}>
-            <NavLink to="/contacts" className={css.navItemText}>
-              Контакти
+            <NavLink to="/contacts">
+              <p className={css.navItemText}>Контакти</p>
             </NavLink>
           </li>
+
           <li className={css.navItem}>
-            <NavLink to="/favorite" className={css.navItemText}>
-              Вибране
+            <NavLink to="/favorite">
+              <p className={css.navItemText}>Вибране</p>
             </NavLink>
           </li>
+
         </ul>
+
       </nav>
     </header>
   );

@@ -1,10 +1,11 @@
-// import css from './Home.module.css'
+import css from './Home.module.css'
+import ItemForm from '../ItemForm/ItemForm';
 
 const Home = () => {
     return (
-        <div>
-            <p>Home page</p>
-        </div>
+        <main className={css.container}>
+            <ItemForm />
+        </main>
     )
 };
 

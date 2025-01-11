@@ -1,11 +1,11 @@
 import Home from "../../components/Home/Home"
-import css from './HomePage.module.css'
+import Page from '../../components/Page/Page'
 
 const HomePage = () => {
     return (
-        <div className={css.container}>
+        <Page>
             <Home />
-        </div>
+        </Page>
     )
 }
 
