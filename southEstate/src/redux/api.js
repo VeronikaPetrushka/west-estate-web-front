@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // const API_URI = 'https://aquatrack-api-myzh.onrender.com/api';
 
-const API_URI = 'http://localhost:8080/api';
+const API_URI = 'http://localhost:8080/api/items';
 
 const headerConfig = {
   withCredentials: true,
@@ -71,8 +71,8 @@ export const getItemsFavorite = async () => {
   return data;
 };
 
-export const getItemById = async (id) => {
-  const { data } = await publicInstance.get(`/${id}`);
+export const getItemById = async (_id) => {
+  const { data } = await publicInstance.get(`/${_id}`);
   return data;
 };
 

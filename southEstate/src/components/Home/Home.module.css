@@ -12,3 +12,18 @@
     letter-spacing: -0.38px;
     margin-bottom: 32px;
 }
+
+.addItemButton {
+    padding: 8px;
+    width: 300px;
+    border-radius: 12px;
+    background-color: #420101;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.addItemButton:hover, .addItemButton:focus {
+    background-color: #672121;
+}

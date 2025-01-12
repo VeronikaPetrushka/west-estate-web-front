@@ -135,9 +135,9 @@ export const fetchItems = createAsyncThunk(
   
   export const fetchItemById = createAsyncThunk(
     'items/fetchById',
-    async (id, thunkAPI) => {
+    async (_id, thunkAPI) => {
       try {
-        const res = await itemsApi.getItemById(id);
+        const res = await itemsApi.getItemById(_id);
         return res;
       } catch (err) {
         return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);

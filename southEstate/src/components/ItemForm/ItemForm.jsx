@@ -1,9 +1,15 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types'; 
 import { useDispatch } from 'react-redux';
+import Modal from 'react-modal';
 import { createItem } from '../../redux/items/operations.js';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import css from './ItemForm.module.css'
 
-const ItemForm = () => {
+Modal.setAppElement('#root');
+
+const ItemForm = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -30,9 +36,12 @@ const ItemForm = () => {
     dispatch(createItem(itemData))
       .then((response) => {
         console.log('Item added:', response);
+        toast.success('Item successfully created!');
+        onClose();
       })
       .catch((error) => {
         console.error('Error adding item:', error);
+        toast.error('Failed to create item. Please try again.');
       });
 
     console.log('Form Data Submitted:', itemData);
@@ -56,41 +65,41 @@ const ItemForm = () => {
   };
 
   const getSubCategories = () => {
-    if (category === 'Buy' || category === 'Rent') {
+    if (category === 'Купити' || category === 'Орендувати') {
       return (
         <>
           <button
             type="button"
-            className={`${css.option} ${subCategory === 'Houses' ? css.selected : ''}`}
-            onClick={() => handleSubCategoryChange('Houses')}
+            className={`${css.option} ${subCategory === 'Будинки' ? css.selected : ''}`}
+            onClick={() => handleSubCategoryChange('Будинки')}
           >
-            Houses
+            Будинки
           </button>
           <button
             type="button"
-            className={`${css.option} ${subCategory === 'Flats' ? css.selected : ''}`}
-            onClick={() => handleSubCategoryChange('Flats')}
+            className={`${css.option} ${subCategory === 'Квартири' ? css.selected : ''}`}
+            onClick={() => handleSubCategoryChange('Квартири')}
           >
-            Flats
+            Квартири
           </button>
         </>
       );
-    } else if (category === 'Commercial') {
+    } else if (category === 'Комерційне') {
       return (
         <>
           <button
             type="button"
-            className={`${css.option} ${subCategory === 'Buy' ? css.selected : ''}`}
-            onClick={() => handleSubCategoryChange('Buy')}
+            className={`${css.option} ${subCategory === 'Купити' ? css.selected : ''}`}
+            onClick={() => handleSubCategoryChange('Купити')}
           >
-            Buy
+            Купити
           </button>
           <button
             type="button"
-            className={`${css.option} ${subCategory === 'Rent' ? css.selected : ''}`}
-            onClick={() => handleSubCategoryChange('Rent')}
+            className={`${css.option} ${subCategory === 'Орендувати' ? css.selected : ''}`}
+            onClick={() => handleSubCategoryChange('Орендувати')}
           >
-            Rent
+            Орендувати
           </button>
         </>
       );
@@ -99,7 +108,16 @@ const ItemForm = () => {
   };
 
   return (
-    <div className={css.form}>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onClose}
+      contentLabel="Create Item"
+      className={css.modal}
+      overlayClassName={css.overlay}
+    >
+      <button className={css.closeBtn} onClick={onClose}>
+        <img src="src/assets/icons/close.png" alt="close" className={css.close} />
+      </button>
       <h2 className={css.title}>Create Item</h2>
       <form onSubmit={handleSubmit} className={css.inner}>
         <div className={css.itemBox}>
@@ -171,24 +189,24 @@ const ItemForm = () => {
           <div className={css.buttonGroup}>
             <button
               type="button"
-              className={`${css.option} ${category === 'Buy' ? css.selected : ''}`}
-              onClick={() => handleCategoryChange('Buy')}
+              className={`${css.option} ${category === 'Купити' ? css.selected : ''}`}
+              onClick={() => handleCategoryChange('Купити')}
             >
-              Buy
+              Купити
             </button>
             <button
               type="button"
-              className={`${css.option} ${category === 'Rent' ? css.selected : ''}`}
-              onClick={() => handleCategoryChange('Rent')}
+              className={`${css.option} ${category === 'Орендувати' ? css.selected : ''}`}
+              onClick={() => handleCategoryChange('Орендувати')}
             >
-              Rent
+              Орендувати
             </button>
             <button
               type="button"
-              className={`${css.option} ${category === 'Commercial' ? css.selected : ''}`}
-              onClick={() => handleCategoryChange('Commercial')}
+              className={`${css.option} ${category === 'Комерційне' ? css.selected : ''}`}
+              onClick={() => handleCategoryChange('Комерційне')}
             >
-              Commercial
+              Комерційне
             </button>
           </div>
         </div>
@@ -205,8 +223,13 @@ const ItemForm = () => {
         <button className={css.createBtn} type="submit">Create</button>
 
       </form>
-    </div>
+    </Modal>
   );
+};
+
+ItemForm.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default ItemForm;

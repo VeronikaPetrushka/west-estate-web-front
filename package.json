@@ -1,6 +1,9 @@
 {
   "dependencies": {
+    "install": "^0.13.0",
+    "npm": "^11.0.0",
     "react-helmet-async": "^2.0.5",
-    "react-router-dom": "^6.26.2"
+    "react-router-dom": "^6.26.2",
+    "react-toastify": "^11.0.2"
   }
 }
