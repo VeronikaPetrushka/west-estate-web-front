@@ -19,6 +19,13 @@ const ItemForm = ({ isOpen, onClose }) => {
   const [size, setSize] = useState('');
   const [category, setCategory] = useState('');
   const [subCategory, setSubCategory] = useState('');
+  // const [images, setImages] = useState([]);
+
+  // const handleImageUpload = (e) => {
+  //   const selectedFiles = e.target.files;
+  //   const fileArray = Array.from(selectedFiles);
+  //   setImages(prevImages => [...prevImages, ...fileArray]);
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,6 +38,7 @@ const ItemForm = ({ isOpen, onClose }) => {
       size,
       category,
       subCategory,
+      // images,
     };
 
     dispatch(createItem(itemData))
@@ -53,6 +61,7 @@ const ItemForm = ({ isOpen, onClose }) => {
     setSize('');
     setCategory('');
     setSubCategory('');
+    // setImages([]); 
   };
 
   const handleCategoryChange = (selectedCategory) => {
@@ -120,6 +129,26 @@ const ItemForm = ({ isOpen, onClose }) => {
       </button>
       <h2 className={css.title}>Create Item</h2>
       <form onSubmit={handleSubmit} className={css.inner}>
+
+      {/* <div className={css.imageUploadContainer}>
+        <div className={css.imagePlaceholder}>
+          {images.length === 0 ? (
+            <span className={css.placeholderText}>No images uploaded</span>
+          ) : (
+            images.map((img, index) => (
+              <img key={index} src={URL.createObjectURL(img)} alt="Uploaded preview" className={css.uploadedImage} />
+            ))
+          )}
+        </div>
+        <input 
+          type="file" 
+          id="imageUpload" 
+          multiple 
+          onChange={handleImageUpload} 
+          className={css.uploadButton} 
+        />
+      </div> */}
+      
         <div className={css.itemBox}>
           <label className={css.label} htmlFor="name">Name</label>
           <input
