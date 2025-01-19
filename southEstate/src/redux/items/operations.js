@@ -147,9 +147,9 @@ export const fetchItems = createAsyncThunk(
   
   export const createItem = createAsyncThunk(
     'items/create',
-    async (itemData, thunkAPI) => {
+    async (formData, thunkAPI) => {
       try {
-        const res = await itemsApi.createItem(itemData);
+        const res = await itemsApi.createItem(formData);
         return res;
       } catch (err) {
         return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);

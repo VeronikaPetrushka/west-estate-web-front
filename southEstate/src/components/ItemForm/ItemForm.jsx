@@ -19,41 +19,57 @@ const ItemForm = ({ isOpen, onClose }) => {
   const [size, setSize] = useState('');
   const [category, setCategory] = useState('');
   const [subCategory, setSubCategory] = useState('');
-  // const [images, setImages] = useState([]);
+  const [images, setImages] = useState([]);
 
-  // const handleImageUpload = (e) => {
-  //   const selectedFiles = e.target.files;
-  //   const fileArray = Array.from(selectedFiles);
-  //   setImages(prevImages => [...prevImages, ...fileArray]);
-  // };
+  const handleImageUpload = (e) => {
+    const selectedFiles = e.target.files;
+    const fileArray = Array.from(selectedFiles);
+    setImages(prevImages => [...prevImages, ...fileArray]);
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const itemData = {
-      name,
-      price,
-      description,
-      location,
-      size,
-      category,
-      subCategory,
-      // images,
-    };
-
-    dispatch(createItem(itemData))
-      .then((response) => {
-        console.log('Item added:', response);
-        toast.success('Item successfully created!');
-        onClose();
-      })
-      .catch((error) => {
-        console.error('Error adding item:', error);
-        toast.error('Failed to create item. Please try again.');
-      });
-
-    console.log('Form Data Submitted:', itemData);
-    
+  
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('price', price);
+    formData.append('description', description || '');
+    formData.append('category', category);
+    formData.append('subCategory', subCategory || '');
+    formData.append('location', location);
+    formData.append('size', size || '');
+  
+    images.forEach((image) => {
+      formData.append('images', image);
+    });  
+  
+    try {
+      const response = await dispatch(createItem(formData)).unwrap();
+      toast.success('Item successfully created!');
+      onClose();
+      console.log('Item added:', response);
+    } catch (error) {
+      console.error('Error adding item:', error);
+      
+      if (error.response) {
+        console.error('Error response:', error.response);
+        console.error('Error data:', error.response.data);
+        console.error('Error status:', error.response.status);
+        console.error('Error headers:', error.response.headers);
+        toast.error(
+          error.response.data.message || 
+          `Error: ${error.response.status} - ${error.response.statusText}` || 
+          'Failed to create item. Please try again.'
+        );
+      } else if (error.message) {
+        toast.error(error.message);
+      } else {
+        toast.error('An unexpected error occurred. Please try again.');
+      }
+    }
+  
+    console.log('Form Data Submitted:', formData);
+  
     setName('');
     setPrice('');
     setDescription('');
@@ -61,9 +77,9 @@ const ItemForm = ({ isOpen, onClose }) => {
     setSize('');
     setCategory('');
     setSubCategory('');
-    // setImages([]); 
+    setImages([]);
   };
-
+  
   const handleCategoryChange = (selectedCategory) => {
     setCategory(selectedCategory);
     setSubCategory('');
@@ -130,7 +146,7 @@ const ItemForm = ({ isOpen, onClose }) => {
       <h2 className={css.title}>Create Item</h2>
       <form onSubmit={handleSubmit} className={css.inner}>
 
-      {/* <div className={css.imageUploadContainer}>
+      <div className={css.imageUploadContainer}>
         <div className={css.imagePlaceholder}>
           {images.length === 0 ? (
             <span className={css.placeholderText}>No images uploaded</span>
@@ -140,14 +156,18 @@ const ItemForm = ({ isOpen, onClose }) => {
             ))
           )}
         </div>
+        <label htmlFor="images">Select images:</label>
         <input 
           type="file" 
-          id="imageUpload" 
+          id="images" 
+          name="images"
           multiple 
           onChange={handleImageUpload} 
           className={css.uploadButton} 
+          // required
         />
-      </div> */}
+        <input type="submit" value="submit" />
+      </div>
       
         <div className={css.itemBox}>
           <label className={css.label} htmlFor="name">Name</label>

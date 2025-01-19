@@ -85,7 +85,7 @@ const Navigation = () => {
           </li>
 
           <li className={css.navItem}>
-            <NavLink to="/buy">
+            <NavLink to="/sell">
               <p className={css.navItemText}>Продати</p>
             </NavLink>
           </li>

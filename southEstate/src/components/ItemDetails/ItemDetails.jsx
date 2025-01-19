@@ -24,15 +24,17 @@ const ItemDetails = () => {
   if (isError) return <div>Error loading item.</div>;
   if (!item) return <div>Item not found.</div>;
 
+  console.log(item)
+
   return (
     <div className={css.detailsContainer}>
-      {/* {item.images && item.images.length > 0 && (
+      {item.images && item.images.length > 0 && (
         <div className={css.imageContainer}>
           {item.images.map((image, index) => (
             <img key={index} src={image} alt={`Item image ${index + 1}`} className={css.itemImage} />
           ))}
         </div>
-      )} */}
+      )}
       <h2>{item.name}</h2>
       <p><strong>Price:</strong> {item.price}</p>
       <p><strong>Location:</strong> {item.location}</p>

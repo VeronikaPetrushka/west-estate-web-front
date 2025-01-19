@@ -8,7 +8,7 @@ const headerConfig = {
   withCredentials: true,
   headers: {
     Accept: 'application/json',
-    'Content-Type': 'application/json',
+    // 'Content-Type': 'application/json', 'form-data'
   },
 };
 
@@ -75,11 +75,15 @@ export const getItemById = async (_id) => {
   const { data } = await publicInstance.get(`/${_id}`);
   return data;
 };
-
-export const createItem = async (itemData) => {
-  const { data } = await publicInstance.post('/', itemData);
+export const createItem = async (formData) => {
+  const { data } = await publicInstance.post('/', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
   return data;
 };
+
 
 export const updateItem = async (id, updatedData) => {
   const { data } = await publicInstance.put(`/${id}`, updatedData);
