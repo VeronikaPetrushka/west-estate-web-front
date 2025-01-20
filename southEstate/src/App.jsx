@@ -37,6 +37,7 @@ function App() {
           <Route path="/commercial/buy" element={<CommercialBuyPage />}/>
           <Route path="/commercial/rent" element={<CommercialRentPage />}/>
           <Route path="/:currentRoute/:id" element={<ItemDetailsPage />}/>
+          <Route path="/:currentRoute/:currentSubRoute/:id" element={<ItemDetailsPage />}/>
         </Routes>
       </div>
     </Suspense>

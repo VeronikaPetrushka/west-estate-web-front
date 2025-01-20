@@ -1,33 +1,111 @@
 .detailsContainer {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .detailsContainer h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #420101;
-  }
-  
-  .detailsContainer p {
-    font-size: 16px;
-    color: #7f7f7f;
-    margin: 10px 0;
-  }
-  
-  .detailsContainer button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #420101;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .detailsContainer button:hover {
-    background-color: #6b0e0e;
-  }
-  
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.detailsContainer h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #420101;
+}
+
+.detailsContainer p {
+  font-size: 16px;
+  color: #7f7f7f;
+  margin: 10px 0;
+}
+
+.goBackButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #420101;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.goBackButton:hover {
+  background-color: #6b0e0e;
+}
+
+.imagesScrollContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.imageContainer {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  gap: 10px;
+  width: 60%;
+  align-self: center;
+}
+
+.itemImage {
+  width: 100%;
+  border-radius: 8px;
+  scroll-snap-align: start;
+}
+
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.activeDot {
+  background-color: #420101;
+}
+
+.arrowBtnLeft {
+  position: absolute;
+  top: 350px;
+  left: 200px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  padding: 10;
+  width: 80px;
+  height: 80px;
+}
+
+.arrowBtnRight {
+  position: absolute;
+  top: 350px;
+  right: 200px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  padding: 10;
+  width: 80px;
+  height: 80px;
+}
+
+.arrowLeft {
+  transform: rotate(180deg);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.arrowRight {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
