@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// const API_URI = 'https://aquatrack-api-myzh.onrender.com/api';
+const API_URI = 'https://southern-estate-backend.onrender.com';
 
-const API_URI = 'http://localhost:8080/api/items';
+// const API_URI = 'http://localhost:8080/api/items';
 
 const headerConfig = {
   withCredentials: true,
