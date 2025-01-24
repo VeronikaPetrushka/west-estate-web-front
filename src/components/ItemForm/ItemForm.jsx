@@ -136,14 +136,14 @@ const ItemForm = ({ isOpen, onClose }) => {
     <Modal
       isOpen={isOpen}
       onRequestClose={onClose}
-      contentLabel="Create Item"
+      contentLabel="Створити об`єкт"
       className={css.modal}
       overlayClassName={css.overlay}
     >
       <button className={css.closeBtn} onClick={onClose}>
         <img src="src/assets/icons/close.png" alt="close" className={css.close} />
       </button>
-      <h2 className={css.title}>Create Item</h2>
+      <h2 className={css.title}>Створити об`єкт</h2>
       <form onSubmit={handleSubmit} className={css.inner}>
 
       <div className={css.imageUploadContainer}>
