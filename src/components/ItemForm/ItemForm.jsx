@@ -149,14 +149,14 @@ const ItemForm = ({ isOpen, onClose }) => {
       <div className={css.imageUploadContainer}>
         <div className={css.imagePlaceholder}>
           {images.length === 0 ? (
-            <span className={css.placeholderText}>No images uploaded</span>
+            <span className={css.placeholderText}>Поки немає завантажених фото</span>
           ) : (
             images.map((img, index) => (
               <img key={index} src={URL.createObjectURL(img)} alt="Uploaded preview" className={css.uploadedImage} />
             ))
           )}
         </div>
-        <label htmlFor="images">Select images:</label>
+        <label htmlFor="images">Виберіть фото:</label>
         <input 
           type="file" 
           id="images" 
@@ -170,7 +170,7 @@ const ItemForm = ({ isOpen, onClose }) => {
       </div>
       
         <div className={css.itemBox}>
-          <label className={css.label} htmlFor="name">Name</label>
+          <label className={css.label} htmlFor="name">Назва</label>
           <input
             type="text"
             id="name"
@@ -183,7 +183,7 @@ const ItemForm = ({ isOpen, onClose }) => {
         </div>
 
         <div className={css.itemBox}>
-          <label className={css.label} htmlFor="price">Price</label>
+          <label className={css.label} htmlFor="price">Ціна</label>
           <input
             type="text"
             id="price"
@@ -196,7 +196,7 @@ const ItemForm = ({ isOpen, onClose }) => {
         </div>
 
         <div className={css.itemBox}>
-          <label className={css.label} htmlFor="description">Description</label>
+          <label className={css.label} htmlFor="description">Про об`єкт</label>
           <textarea
             id="description"
             value={description}
@@ -208,7 +208,7 @@ const ItemForm = ({ isOpen, onClose }) => {
         </div>
 
         <div className={css.itemBox}>
-          <label className={css.label} htmlFor="location">Location</label>
+          <label className={css.label} htmlFor="location">Місце знаходження</label>
           <input
             type="text"
             id="location"
@@ -221,7 +221,7 @@ const ItemForm = ({ isOpen, onClose }) => {
         </div>
 
         <div className={css.itemBox}>
-          <label className={css.label} htmlFor="size">Size</label>
+          <label className={css.label} htmlFor="size">Розмір</label>
           <input
             type="text"
             id="size"
@@ -234,7 +234,7 @@ const ItemForm = ({ isOpen, onClose }) => {
         </div>
 
         <div className={css.itemBox}>
-          <label className={css.label} htmlFor="category">Category</label>
+          <label className={css.label} htmlFor="category">Категорія</label>
           <div className={css.buttonGroup}>
             <button
               type="button"
@@ -262,14 +262,14 @@ const ItemForm = ({ isOpen, onClose }) => {
 
         {category && (
           <div className={css.itemBox}>
-            <label className={css.label} htmlFor="subCategory">Sub - category</label>
+            <label className={css.label} htmlFor="subCategory">Підрозділ</label>
             <div className={css.buttonGroup}>
               {getSubCategories()}
             </div>
           </div>
         )}
 
-        <button className={css.createBtn} type="submit">Create</button>
+        <button className={css.createBtn} type="submit">Створити</button>
 
       </form>
     </Modal>
