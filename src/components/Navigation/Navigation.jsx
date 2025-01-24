@@ -6,6 +6,8 @@ const Navigation = () => {
   const [isBuyHovered, setIsBuyHovered] = useState(false);
   const [isRentHovered, setIsRentHovered] = useState(false);
   const [isCommercialHovered, setIsCommercialHovered] = useState(false);
+  const [isOwnersHovered, setIsOwnersHovered] = useState(false);
+  const [isContactsHovered, setIsContactsHovered] = useState(false);
 
   const handleBuyMouseOver = () => {
     setIsBuyHovered(true);
@@ -29,6 +31,22 @@ const Navigation = () => {
 
   const handleCommercialMouseLeave = () => {
     setIsCommercialHovered(false);
+  };
+
+  const handleOwnersMouseOver = () => {
+    setIsOwnersHovered(true);
+  };
+
+  const handleOwnersMouseLeave = () => {
+    setIsOwnersHovered(false);
+  };
+
+  const handleContactsMouseOver = () => {
+    setIsContactsHovered(true);
+  };
+
+  const handleContactsMouseLeave = () => {
+    setIsContactsHovered(false);
   };
 
   return (
@@ -84,10 +102,22 @@ const Navigation = () => {
             )}
           </li>
 
-          <li className={css.navItem}>
-            <NavLink to="/sell">
-              <p className={css.navItemText}>Продати</p>
+          <li className={css.navItem}
+            onMouseOver={handleOwnersMouseOver}
+            onMouseLeave={handleOwnersMouseLeave}>
+            <NavLink to="/owners">
+              <p className={css.navItemText}>Власникам</p>
             </NavLink>
+            {isOwnersHovered && (
+              <ul className={css.dropdownMenu}>
+                <li className={css.dropdownItem}>
+                  <NavLink to="/owners/sell" className={css.navSubItem}>Продаж</NavLink>
+                </li>
+                <li className={css.dropdownItem}>
+                  <NavLink to="/owners/rent" className={css.navSubItem}>Оренда</NavLink>
+                </li>
+              </ul>
+            )}
           </li>
 
           <li className={css.navItem}
@@ -108,10 +138,20 @@ const Navigation = () => {
             )}
           </li>
 
-          <li className={css.navItem}>
-            <NavLink to="/contacts">
+          <li className={css.navItem}
+            onMouseOver={handleContactsMouseOver}
+            onMouseLeave={handleContactsMouseLeave}>
               <p className={css.navItemText}>Контакти</p>
-            </NavLink>
+            {isContactsHovered && (
+              <ul className={css.dropdownMenu}>
+                <li className={css.dropdownItem}>
+                  <a href="tel:+380979748002" className={css.navSubItem}>+380979748002</a>
+                </li>
+                <li className={css.dropdownItem}>
+                  <a href="mailto:company@example.com" className={css.navSubItem}>company email</a>
+                </li>
+              </ul>
+            )}
           </li>
 
           <li className={css.navItem}>
