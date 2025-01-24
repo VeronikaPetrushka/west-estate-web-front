@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URI = 'https://southern-estate-backend.onrender.com';
+const API_URI = 'https://southern-estate-backend.onrender.com/api/items';
 
 // const API_URI = 'http://localhost:8080/api/items';
 
